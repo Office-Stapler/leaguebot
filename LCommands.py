@@ -5,10 +5,13 @@ import os, re
 from PIL import Image
 
 # returns the champions name with a given champion id
-def findNamebyId(champid, champions):
-    for i in champions['data']:
-        if champid == int(champions['data'][i]['key']):
-            return champions['data'][i]['name']
+def findNamebyId(champid):
+    with open('data/maindata/champion.json') as f:
+        info = json.loads(f.read())
+    for i in info['data'].keys():
+        if champid == int(info['data'][i]['key']):
+            return info['data'][i]['name']
+
 # returns the URL used to get information about a summoner
 def getSummonerURL(summonerName):
     return f'{LConsts.summoner_url}{summonerName}?api_key={const.APIKey}'

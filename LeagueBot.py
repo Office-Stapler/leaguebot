@@ -1,4 +1,5 @@
-import LConst, LCommands, LClasses, discord, re, os, os.path, random
+import LConst, LCommands, LClasses
+import discord, re, os, os.path, random, json, requests
 from discord.ext import commands
 
 client = commands.Bot(command_prefix = '+')
@@ -90,4 +91,33 @@ async def ranchamp(ctx):
             await ctx.send(champ.name)
             break
         m += 1
+
+@client.command('freechamps')
+async def freechamps(ctx):
+    champs = json.loads(requests.get(LConst.champ_rotation_url + f'?api_key={LConst.APIKey}').text)
+    embed = discord.Embed(
+        title = 'Free Champion Rotations',
+        colour = discord.Colour.blue(),
+    )
+    free_champs_normal = list(map(LCommands.findNamebyId, champs['freeChampionIds']))
+    free_champs_noob = list(map(LCommands.findNamebyId, champs['freeChampionIdsForNewPlayers']))
+    embed.add_field(name='Free Champions for Regular Players', value=free_champs_normal)
+    embed.add_field(name='Free Champions for Players < level 10', value=free_champs_noob, inline=False)
+
+    await ctx.send(embed=embed)
+
+
+@client.command('summonerinfo')
+async def summonerinfo(ctx, *, name):
+    summoner = LClasses.summoner(name)
+    print(summoner.details)
+    await ctx.send(summoner.details["name"], file=discord.File(summoner.icon))
+
+@client.command('rmatch')
+async def rmatch(ctx, *, name):
+    summoner = LClasses.summoner(name)
+    print(summoner.details)
+    matches = summoner.find_most_recent_match()
+    print(matches['participantIdentities'])
+    await ctx.send('Done..')
 client.run(LConst.discord_token)
