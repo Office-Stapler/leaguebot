@@ -7,5 +7,5 @@ champ_rotation_url = 'https://oc1.api.riotgames.com/lol/platform/v3/champion-rot
 
 
 
-APIKey = 'RGAPI-e7ed1e13-67e7-4789-8e60-500ae6d12294'
-discord_token = 'NjQ5NTU4MjE0NDUwMzQ4MDQy.Xniv1Q.Kfk2-jYE3qNTP8dVEGu-KDdfB6s'
+APIKey = ''
+discord_token = ''
