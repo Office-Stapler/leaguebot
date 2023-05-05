@@ -1,3 +1,4 @@
+import json
 summoner_url = 'https://oc1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'
 chest_url = 'https://oc1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/'
 league_summoner_url = "https://oc1.api.riotgames.com/lol/league/v4/entries/by-summoner/"
@@ -7,5 +8,9 @@ champ_rotation_url = 'https://oc1.api.riotgames.com/lol/platform/v3/champion-rot
 
 
 
-APIKey = ''
-discord_token = ''
+LEAGUE_API_TOKEN = ''
+DISCORD_TOKEN = ''
+with open("./config.json", "r+") as f:
+    config = json.load(f)
+    API_KEY = config["LEAGUE_API_TOKEN"]
+    DISCORD_TOKEN = config["DISCORD_TOKEN"]
