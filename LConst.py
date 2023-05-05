@@ -1,12 +1,13 @@
 import json
-summoner_url = 'https://oc1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'
-chest_url = 'https://oc1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/'
-league_summoner_url = "https://oc1.api.riotgames.com/lol/league/v4/entries/by-summoner/"
-match_by_id_url = 'https://oc1.api.riotgames.com/lol/match/v4/matches/'
-match_by_account_url = 'https://oc1.api.riotgames.com/lol/match/v4/matchlists/by-account/'
-champ_rotation_url = 'https://oc1.api.riotgames.com/lol/platform/v3/champion-rotations'
 
-
+CHAMPION_JSON_URL = "http://ddragon.leagueoflegends.com/cdn/13.9.1/data/en_AU/champion"
+CHAMPION_SPLASH_URL = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash"
+SUMMONOR_URL = 'https://oc1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'
+CHEST_URL = 'https://oc1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/'
+LEAUGE_SUMMONER_URL = "https://oc1.api.riotgames.com/lol/league/v4/entries/by-summoner/"
+MATCH_BY_ID_URL = 'https://oc1.api.riotgames.com/lol/match/v4/matches/'
+MATCH_BY_ACCOUNT_URL = 'https://oc1.api.riotgames.com/lol/match/v4/matchlists/by-account/'
+CHAMPION_ROTATION_URL = 'https://oc1.api.riotgames.com/lol/platform/v3/champion-rotations'
 
 LEAGUE_API_TOKEN = ''
 DISCORD_TOKEN = ''
