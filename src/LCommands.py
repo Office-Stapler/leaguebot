@@ -3,7 +3,7 @@ from PIL import Image
 import os
 
 import LConst as const
-from LClasses import Champion
+from Classes import Champion
 
 
 # returns the champions name with a given champion id

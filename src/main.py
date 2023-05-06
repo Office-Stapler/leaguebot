@@ -1,7 +1,7 @@
 import discord, re, os, os.path, random, json, requests
 from discord.ext import commands
 
-import LConst, LCommands, LClasses
+import LConst, LCommands, src.LClasses as LClasses
 
 intents = discord.Intents.default()
 intents.members = True
