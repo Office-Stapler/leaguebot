@@ -2,8 +2,7 @@ import requests, json
 from PIL import Image
 import os
 
-import LConst as const
-from Classes import Champion
+from Models.Champion import Champion
 
 
 # returns the champions name with a given champion id
@@ -47,28 +46,24 @@ def fChampInfo(champion: Champion):
     if not champion.is_valid:
         return ''
     a_dict = {}
-    data = champion.data
-    print(data)
-    name = data["name"]
-    title = data["title"]
-
+    
     tips_for = []
-    for idx, tips in enumerate(data["allytips"]):
-        tips_for.append(f'{tips}: {idx}')
-    a_dict[f'Tips as {title}:'] = tips_for
+    for idx, tip in enumerate(champion.allytips):
+        tips_for.append(f'{idx + 1}: {tip}')
+    a_dict[f'Tips as {champion.name}:'] = tips_for
 
     tips_against = []
-    for idx, tips in enumerate(data["enemytips"]):
-        tips_against.append(f'{idx}: {tips}')
-    a_dict[f'Tips versing {title}:'] = tips_against
+    for idx, tip in enumerate(champion.enemytips):
+        tips_against.append(f'{idx + 1}: {tip}')
+    a_dict[f'Tips versing {champion.name}:'] = tips_against
 
     tags = [(f'Type:')]
-    for idx, tag in enumerate(data["tags"]):
-        tags.append(f'{idx}: {tag}')
+    for idx, tag in enumerate(champion.tags):
+        tags.append(f'{idx + 1}: {tag}')
 
-    a_dict['Ability:'] = [f'{data["partype"]}']
+    a_dict['Abilities use:'] = [f'{champion.partype}']
     stats_info = []
-    stats = data["stats"]
+    stats = champion.stats
     keys = list(stats.items())
     for [stat_type, stat_value] in keys:
         stats_info.append(f'{stat_type.capitalize()} = {stat_value}')

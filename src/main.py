@@ -1,7 +1,9 @@
 import discord, re, os, os.path, random, json, requests
 from discord.ext import commands
 
-import LConst, LCommands, src.LClasses as LClasses
+import LConst, LCommands
+from Models.Champion import Champion
+
 
 intents = discord.Intents.default()
 intents.members = True
@@ -19,13 +21,13 @@ async def on_ready():
 # finds champion info 
 @client.command('fchamp', description = 'Finds basic champion info')
 async def fchamp(ctx, *, name):
-    champion = LClasses.Champion(name)
+    champion = Champion(name)
     about = LCommands.fChampInfo(champion)
     if not champion.is_valid:
         await ctx.send('Champion not found, please make sure spelling is correct')
         return
     e = discord.Embed(
-        title = f'About {champion.data["title"]}',
+        title = f'About {champion.name} : {champion.title}',
         colour = discord.Colour.blue()
     )
     e.set_thumbnail(url=champion.get_splash_screen_image())
